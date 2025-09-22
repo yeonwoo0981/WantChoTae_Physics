@@ -1,19 +1,21 @@
-using System;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace Work.SYW._01_Scripts
 {
-    public PlayerInput PlayerInput { get; private set; }
-    public PlayerMovement PlayerMovement { get; private set; }
-
-    private void Awake()
+    public class Player : MonoBehaviour
     {
-        PlayerInput = GetComponent<PlayerInput>();
-        PlayerMovement = GetComponent<PlayerMovement>();
-    }
+        public PlayerInput PlayerInput { get; private set; }
+        public PlayerMovement PlayerMovement { get; private set; }
 
-    private void Update()
-    {
-        PlayerMovement.SetXMove(PlayerInput.MoveDir.x);
+        private void Awake()
+        {
+            PlayerInput = GetComponent<PlayerInput>();
+            PlayerMovement = GetComponent<PlayerMovement>();
+        }
+
+        private void Update()
+        {
+            PlayerMovement.SetXMove(PlayerInput.MoveDir.x);
+        }
     }
 }
