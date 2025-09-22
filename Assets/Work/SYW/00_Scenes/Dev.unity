@@ -372,6 +372,8 @@ GameObject:
   - component: {fileID: 338992784}
   - component: {fileID: 338992783}
   - component: {fileID: 338992785}
+  - component: {fileID: 338992787}
+  - component: {fileID: 338992786}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -511,9 +513,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d4398110359b84fb44a81da6db5d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreText: {fileID: 338992783}
   _startScore: 100
-  <CurrentScore>k__BackingField: 0
+  _scoreStep: 20
+--- !u!114 &338992786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338992781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7129316156379340944012c119e6cb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scoreText: {fileID: 338992783}
+  _scoreSystem: {fileID: 338992785}
+--- !u!114 &338992787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338992781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eadba5901f47fc4797bcea0d5fa8f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scoreSystem: {fileID: 338992785}
 --- !u!1 &1133149757
 GameObject:
   m_ObjectHideFlags: 0
