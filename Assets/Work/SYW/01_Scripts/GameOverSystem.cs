@@ -19,7 +19,7 @@ namespace Work.SYW._01_Scripts
 
         private void GameOverHandler()
         {
-            Debug.Log("게임오버");
+            Application.Quit();
         }
     }
 }
