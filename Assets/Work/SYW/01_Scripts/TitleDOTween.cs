@@ -19,7 +19,7 @@ public class TitleDOTween : MonoBehaviour
     private void Start()
     {
         _rectTransform
-            .DOAnchorPosY(_defaultPosition.y + _move, 1.1f)
+            .DOAnchorPosY(_defaultPosition.y + _move, 1.5f)
             .SetEase(Ease.Flash)
             .SetUpdate(true);
     }
