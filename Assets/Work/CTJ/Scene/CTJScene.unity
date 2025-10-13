@@ -154,7 +154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 1920, y: 150}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &185706491
@@ -221,7 +221,7 @@ Transform:
   m_GameObject: {fileID: 700492379}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 156.93614, y: 842.1592, z: -11.487494}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -239,11 +239,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a884351f7d59e42876979789a006a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentQuestionNum: 0
+  _questions:
+  - "\uCD95\uC804\uAE30\uB294 \uC804\uD558\uB97C \uBAA8\uC544 \uC804\uAE30 \uC5D0\uB108\uC9C0\uB97C
+    \uC800\uC7A5\uD558\uB294 \uC7A5\uCE58\uB85C, \uB0B4\uBD80\uB294 \uB450 \uAC1C\uC758
+    \uB3C4\uCCB4\uD310\uC774 \uC11C\uB85C \uACB0\uD569\uB418\uC5B4 \uC788\uB2E4."
+  - "\uCDA9\uC804\uC5D0\uC11C, \uC591\uADF9\uC774 \uC5F0\uACB0\uB41C \uAE08\uC18D\uD310\uC740
+    \uC74C\uC804\uD558\uB85C, \uC74C\uADF9\uC774 \uC5F0\uACB0\uB41C \uAE08\uC18D\uD310\uC740
+    \uC591\uC804\uD558\uB85C \uB300\uC804\uB41C\uB2E4."
+  - "\uCDA9\uC804\uC5D0\uC11C, \uB450 \uB3C4\uCCB4\uD310\uC740 \uC804\uC704\uCC28\uAC00
+    \uC804\uC6D0\uC758 \uC804\uC555\uACFC \uAC19\uC544\uC9C8 \uB54C\uAE4C\uC9C0 \uC804\uD558\uB97C
+    \uBAA8\uC740\uB2E4."
+  - "\uC804\uAE30 \uD68C\uB85C\uC5D0\uC11C \uCD95\uC804\uAE30\uAC00 \uC804\uD558\uB97C
+    \uC783\uB294 \uACFC\uC815\uC744 \uBC29\uC804\uC774\uB77C\uACE0 \uD55C\uB2E4."
+  - "\uBC29\uC804\uC774 \uC77C\uC5B4\uB098\uB294 \uC18D\uB3C4\uB294 \uCDA9\uC804\uBCF4\uB2E4
+    \uBE60\uB974\uB2E4."
+  - "\uB354 \uB9CE\uC740 \uC804\uD558\uB97C \uC800\uC7A5\uD558\uB294 \uBC29\uBC95\uC73C\uB85C\uB294
+    \uB450 \uB3C4\uCCB4\uD310 \uC0AC\uC774\uC758 \uAC04\uACA9\uC744 \uC904\uC774\uAC70\uB098,
+    \uB450 \uB3C4\uCCB4\uD310\uC758 \uBA74\uC801\uC744 \uAC10\uC18C\uC2DC\uD0A4\uB294
+    \uBC29\uBC95\uC774 \uC788\uB2E4."
+  - "\uD0A4\uBCF4\uB4DC \uC790\uD310\uC740 \uACE0\uC815\uB41C \uADF9\uD310\uACFC
+    \uC6C0\uC9C1\uC774\uB294 \uADF9\uD310\uC73C\uB85C \uC774\uB8E8\uC5B4\uC838 \uC788\uC73C\uBA70,
+    \uC790\uD310\uC744 \uB204\uB974\uBA74 \uADF9\uD310\uC5D0 \uC800\uC7A5\uB41C \uC804\uD558\uB7C9\uC774
+    \uBCC0\uD654\uD558\uC5EC \uC785\uB825 \uC2E0\uD638\uAC00 \uBC1C\uC0DD\uD55C\uB2E4."
+  - "\uC2A4\uB9C8\uD2B8\uD3F0\uC758 MEMS\uB294 \uD06C\uACE0 \uB450\uAEBC\uC6B4 \uB450
+    \uAC1C\uC758 \uADF9\uD310\uC73C\uB85C \uC774\uB8E8\uC5B4\uC838 \uC788\uC5B4,
+    \uD734\uB300\uD3F0\uC744 \uAE30\uC6B8\uC774\uBA74 \uADF9\uD310 \uC0AC\uC774\uC758
+    \uAC04\uACA9\uC5D0 \uBCC0\uD654\uAC00 \uC0DD\uAE30\uACE0, \uC2A4\uB9C8\uD2B8\uD3F0\uC774
+    \uC774\uB54C \uC804\uD558\uB7C9\uC758 \uBCC0\uD654\uB97C \uAC10\uC9C0\uD558\uC5EC
+    \uD654\uBA74\uC744 \uD68C\uC804\uC2DC\uD0A8\uB2E4."
   questionPanel: {fileID: 709639016}
   OPanel: {fileID: 185706489}
   XPanel: {fileID: 1647614309}
   _questionText: {fileID: 1046507105}
   _numText: {fileID: 1143277601}
+  _timeDelayed: 3
 --- !u!1 &709639016
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,8 +990,8 @@ Canvas:
   m_GameObject: {fileID: 1151496345}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1289678683}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1304,7 +1334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 1920, y: 150}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1647614311
