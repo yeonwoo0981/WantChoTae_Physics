@@ -10,6 +10,7 @@ public class QuestionManager : MonoBehaviour
     [Header("Question")]
     public int _currentQuestionNum = 1;
     public string[] _questions;
+    public int[] _questionsTF;
 
     [Header("Panels (RectTransform)")]
     public RectTransform OPanel;

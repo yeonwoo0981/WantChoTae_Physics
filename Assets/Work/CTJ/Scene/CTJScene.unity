@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a884351f7d59e42876979789a006a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: {fileID: 0}
   _currentQuestionNum: 0
   _questions:
   - "\uCD95\uC804\uAE30\uB294 \uC804\uD558\uB97C \uBAA8\uC544 \uC804\uAE30 \uC5D0\uB108\uC9C0\uB97C
@@ -268,12 +269,14 @@ MonoBehaviour:
     \uAC04\uACA9\uC5D0 \uBCC0\uD654\uAC00 \uC0DD\uAE30\uACE0, \uC2A4\uB9C8\uD2B8\uD3F0\uC774
     \uC774\uB54C \uC804\uD558\uB7C9\uC758 \uBCC0\uD654\uB97C \uAC10\uC9C0\uD558\uC5EC
     \uD654\uBA74\uC744 \uD68C\uC804\uC2DC\uD0A8\uB2E4."
-  questionPanel: {fileID: 709639016}
-  OPanel: {fileID: 185706489}
-  XPanel: {fileID: 1647614309}
+  _questionsTF: 0000000000000000010000000100000001000000000000000100000000000000
+  OPanel: {fileID: 185706490}
+  XPanel: {fileID: 1647614310}
   _questionText: {fileID: 1046507105}
   _numText: {fileID: 1143277601}
   _timeDelayed: 3
+  showY: 0
+  hideY: -150
 --- !u!1 &709639016
 GameObject:
   m_ObjectHideFlags: 0
