@@ -11,14 +11,17 @@ public class QuestionManager : MonoBehaviour
     public int _currentQuestionNum = 1;
     public string[] _questions;
     public int[] _questionsTF;
+    public string[] _questionsCommentary;
 
     [Header("Panels (RectTransform)")]
     public RectTransform OPanel;
     public RectTransform XPanel;
+    public GameObject CPanel;
 
     [Header("UI Texts")]
     public TextMeshProUGUI _questionText;
     public TextMeshProUGUI _numText;
+    public TextMeshProUGUI _commentaryText;
 
     [Header("Timing")]
     public float _timeDelayed = 5.0f;
@@ -32,6 +35,7 @@ public class QuestionManager : MonoBehaviour
         // 시작 시 패널을 숨긴 위치로 정렬(선택)
         if (OPanel) OPanel.anchoredPosition = new Vector2(OPanel.anchoredPosition.x, hideY);
         if (XPanel) XPanel.anchoredPosition = new Vector2(XPanel.anchoredPosition.x, hideY);
+        CPanel.SetActive(false);
 
         StartQuestions();
     }
@@ -85,5 +89,18 @@ public class QuestionManager : MonoBehaviour
 
         // 다음 문제로 넘어갈 준비
         _currentQuestionNum++;
+    }
+
+    public void Commentary()
+    {
+        CPanel.SetActive(true);
+        _commentaryText.text = _questionsCommentary[_currentQuestionNum - 1];
+        StartCoroutine(AutoHide2());
+    }
+
+    private IEnumerator AutoHide2()
+    {
+        yield return new WaitForSeconds(15f);
+        CPanel.SetActive(false);
     }
 }
