@@ -5,54 +5,84 @@ using UnityEngine;
 
 public class QuestionManager : MonoBehaviour
 {
+    [SerializeField] private ScoreSystem score;    // 인스펙터에서 할당 권장
+
+    [Header("Question")]
     public int _currentQuestionNum = 1;
-    [SerializeField] private string[] _questions;
+    public string[] _questions;
 
-    [SerializeField] private GameObject questionPanel;
-    [SerializeField] private GameObject OPanel;
-    [SerializeField] private GameObject XPanel;
+    [Header("Panels (RectTransform)")]
+    public RectTransform OPanel;
+    public RectTransform XPanel;
 
-    [SerializeField] private TextMeshProUGUI _questionText;
-    [SerializeField] private TextMeshProUGUI _numText;
+    [Header("UI Texts")]
+    public TextMeshProUGUI _questionText;
+    public TextMeshProUGUI _numText;
 
-    [SerializeField] private float _timeDelayed = 5.0f;
+    [Header("Timing")]
+    public float _timeDelayed = 5.0f;
 
+    [Header("Anim Y Pos")]
+    public float showY = 0f;       // 보여줄 때의 앵커 Y
+    public float hideY = -150f;    // 숨길 때의 앵커 Y
 
     private void Start()
     {
+        // 시작 시 패널을 숨긴 위치로 정렬(선택)
+        if (OPanel) OPanel.anchoredPosition = new Vector2(OPanel.anchoredPosition.x, hideY);
+        if (XPanel) XPanel.anchoredPosition = new Vector2(XPanel.anchoredPosition.x, hideY);
+
         StartQuestions();
     }
 
     public void OtextOn()
     {
-        Sequence sequence = DOTween.Sequence();
+        Debug.Log("OCheck");
 
-        sequence.Append(OPanel.transform.DOMoveY(0, 0.5f));
-        StartCoroutine(TimeDelayed(OPanel));
+        if (OPanel == null) return;
+        // UI는 RectTransform의 앵커 포지션으로 움직이는게 안정적
+        OPanel.DOKill();
+        OPanel.DOAnchorPosY(showY, 0.5f).SetEase(Ease.OutCubic);
+        StartCoroutine(AutoHide(OPanel));
+
+        if (score != null) score.AddScore();
     }
 
     public void XtextOn()
     {
-        Sequence sequence = DOTween.Sequence();
+        Debug.Log("XCheck");
 
-        sequence.Append(XPanel.transform.DOMoveY(0, 0.5f));
-        StartCoroutine(TimeDelayed(XPanel));
+        if (XPanel == null) return;
+        XPanel.DOKill();
+        XPanel.DOAnchorPosY(showY, 0.5f).SetEase(Ease.OutCubic);
+        StartCoroutine(AutoHide(XPanel));
+
+        if (score != null) score.ReduceScore();
     }
 
-    IEnumerator TimeDelayed(GameObject panel)
+    private IEnumerator AutoHide(RectTransform panel)
     {
-        Sequence sequence = DOTween.Sequence();
-
         yield return new WaitForSeconds(_timeDelayed);
-
-        sequence.Append(panel.transform.DOMoveY(-150, 0.5f));
-        sequence.Kill();
+        if (panel != null)
+        {
+            panel.DOKill();
+            panel.DOAnchorPosY(hideY, 0.5f).SetEase(Ease.InCubic);
+        }
     }
 
     public void StartQuestions()
     {
-        _currentQuestionNum++;
+        // 현재 번호와 텍스트 갱신
         _numText.text = $"{_currentQuestionNum}.";
-        _questionText.text = _questions[_currentQuestionNum - 1];
+        if (_questions != null && _questions.Length >= _currentQuestionNum)
+        {
+            _questionText.text = _questions[_currentQuestionNum - 1];
+        }
+        else
+        {
+        }
+
+        // 다음 문제로 넘어갈 준비
+        _currentQuestionNum++;
     }
 }
